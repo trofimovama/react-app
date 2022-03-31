@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import "./GetWeather.css";
-import axios from "axios";
+import { WeatherFunction } from "./WeatherFunction";
 
 const GetWeather = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [location, setLocation] = useState("");
 
-  const getData = (cityName) => {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=31437cba04d38b2ed41b44a1882df5f7&lang=ru`;
-    axios.get(url).then((response) => {
-      setData(response.data);
-      console.log(response.data);
-    });
-    setLocation("");
-  };
-
-  const searchLocation = (event) => {
+  const searchLocation = async (event) => {
     if (event.key === "Enter") {
-      getData(location);
+      const weatherData = await WeatherFunction(location);
+      setData(weatherData);
+      setLocation("");
+      console.log(weatherData);
     }
   };
 
@@ -35,25 +29,21 @@ const GetWeather = () => {
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>{data.name}</p>
+            <p>{data[0]}</p>
           </div>
           <div className="temp">
-            {data.main ? <h1>{data.main.temp} ℃</h1> : null}
+            <h1>{data[1]}</h1>
           </div>
           <div className="description">
-            {data.weather ? <p>{data.weather[0].description}</p> : null}
+            <p>{data[2]}</p>
           </div>
         </div>
         <div className="bottom">
           <div className="max-temp">
-            {data.main ? (
-              <p>Максимальная температура сегодня: {data.main.temp_max} ℃</p>
-            ) : null}
+            <p>{data[3]}</p>
           </div>
           <div className="min-temp">
-            {data.main ? (
-              <p>Минимальная температура сегодня: {data.main.temp_min} ℃</p>
-            ) : null}
+            <p>{data[4]}</p>
           </div>
         </div>
       </div>
