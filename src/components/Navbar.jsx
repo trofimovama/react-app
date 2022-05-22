@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GiHeartBattery } from "react-icons/gi";
-import "./Navbar.css";
+import "./Navbar.scss";
 
 const Navbar = () => {
   return (

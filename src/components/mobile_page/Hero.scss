@@ -1,0 +1,98 @@
+@import './General.scss';
+
+.hero_container {
+    width: 80%;
+    height: 30%;
+    box-shadow: $shadow-out;
+    margin: auto;
+    border-radius: 25px; 
+    .flex_container_top {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px;
+        .left_flex_box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;            
+        .city_title {
+            @include font ($font-medium, bold, $font-primary);
+                       
+        }
+        .weather_pic {
+            height: 120px;
+            width: 120px;
+            box-shadow: $shadow-in;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: $color-active;
+        }
+    }
+        .main_temp {
+            @include font ($font-extra-large, regular, $font-primary);            
+        }
+        .main_feel {
+            @include font ($font-small, regular, $font-secondary);
+        }
+        .main_flex_temp {
+            display: flex;
+            @include font ($font-small, regular, $font-secondary);
+            .arrow_up {                
+                color: $color-green;
+            }
+            .arrow_down {
+                color: $color-red;
+                padding-left: 13px;
+            }
+        }
+    } 
+    .flex_container_bottom {
+        display: flex;
+        @include font ($font-medium, regular, $font-secondary);
+        justify-content: space-around;
+        .bottom_left_box {
+            padding-top: 10px; 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            .info_box {
+                display: flex;
+                padding-bottom: 10px;
+                text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px rgb(229,228,226);
+                .bottom_info_icon {
+                font-size: 25px;
+                padding-right: 15px;
+            }  
+        }       
+        }
+        .bottom_right_box {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            .info_box {
+                display: flex;
+                padding-bottom: 10px;
+                text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px rgb(229,228,226);
+                .bottom_info_icon {
+                    font-size: 25px;
+                    padding-right: 15px;
+                }
+            }
+        }
+    } 
+}
+
+.divider {
+    width: 85%;
+    display: block;
+    height: 3px;
+    margin: auto;
+    border-radius: 6px;
+    background: #e0e0e0;
+    box-shadow: inset 2px 2px 3px #a6a6a6,
+            inset -2px -2px 3px #ffffff;
+}
+

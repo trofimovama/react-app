@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./GetWeather.css";
+import "./GetWeather.scss";
 import { WeatherFunction } from "./WeatherFunction";
 
 const GetWeather = () => {

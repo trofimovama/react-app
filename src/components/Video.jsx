@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Video.css";
+import "./Video.scss";
+import "./Button.scss";
+import Button from './Button';
 
 import spaceVideo from "../assets/space.mp4";
 
@@ -12,14 +14,16 @@ const Video = () => {
       </video>
       <div className="content">
         <h2>Погода во всех городах мира</h2>
-
-        <div>
-          <Link to="/weather" className="btn btn-main">
-            Узнать погоду
-          </Link>
-        </div>
       </div>
-    </div>
+        <Link to="/weather" >
+          <Button name="узнать погоду" />
+        </Link>
+
+        <Link to="/mobile">
+          <Button name="узнать погоду подробнее" />
+        </Link>
+      
+      </div>
   );
 };
 

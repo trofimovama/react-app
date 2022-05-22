@@ -1,0 +1,12 @@
+@import './General.scss';
+
+.day_container {
+    @extend %card_container;
+    min-width: 200px;
+}
+
+.day_secondary_container {
+    @extend %card_container;
+    min-width: 200px;
+    box-shadow: $shadow-in;
+}

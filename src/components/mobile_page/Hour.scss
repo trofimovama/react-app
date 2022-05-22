@@ -1,0 +1,48 @@
+@import './General.scss';
+
+.hour_container {
+    @extend %card_container;
+}
+
+.hour_container_secondary {
+    @extend %card_container;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-shadow: $shadow-in; 
+    background-color: $mobile-background;
+    overflow: hidden;   
+    .secondary_title {
+        @include font ($font-small, bold, $font-secondary);
+        align-self: center;
+        margin-top: 10px;
+        
+    }
+    .secondary_hour_degrees {
+        @include font ($font-large, bold, $font-secondary);
+        align-self: center;
+    }
+    .bottom_flex_items {
+        display: flex;
+        align-items: center;
+        .icon_container{
+            padding: 3px;
+            background-color: $color-gold;
+            border-radius: 0 20px 0 0;
+            margin-right: 10px;
+            .flex_img {
+                height: 40px;
+                width: 40px;
+                
+            }
+            .bottom_descr {
+                margin-bottom: 20px;
+            }
+        }     
+    }
+
+}
+
+
+
+
+

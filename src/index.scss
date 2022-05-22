@@ -5,10 +5,13 @@
   margin: 0;
   padding: 0;
 }
+$text-white: white;
 
 h1, h2, p {
-  color: #fff;
+  color: $text-white;
 }
+
+
 
 body {
   margin: 0;
@@ -30,16 +33,3 @@ code {
     monospace;
 }
 
-.btn {
-  padding: 12px 32px;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: rgba(255, 255, 255, .2);
-}

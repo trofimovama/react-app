@@ -1,0 +1,27 @@
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.btn {
+    margin-top: 60px;
+    width: 400px;
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    &:hover {
+        background: rgba(255, 255, 255, .2); 
+    }
+  }
+
+
+.btn-main {
+  margin-top: 100px;
+    position: relative;
+    top: 5vh;
+  }
