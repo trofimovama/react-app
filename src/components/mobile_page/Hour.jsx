@@ -3,7 +3,6 @@ import "./General.scss";
 import "./Hour.scss";
 
 import {HourActiveCard} from './HourActiveCard'
-import {DayActiveCard} from './DayActiveCard'
 import {HourSecondaryCard} from './HourSecondaryCard'
 import {SectionTitle} from './SectionTitle'
 
