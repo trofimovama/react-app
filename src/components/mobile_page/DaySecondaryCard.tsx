@@ -2,7 +2,13 @@ import React from "react";
 import "./General.scss";
 import "./Hour.scss";
 
-export const DaySecondaryCard = (props) => {
+interface DaySecondaryCardProps {
+    day: string;
+    icon: any;
+    temp: string;
+}
+
+export const DaySecondaryCard = (props: DaySecondaryCardProps) => {
     return (
           <div className="day_secondary_container">
                 <div className="secondary_title">

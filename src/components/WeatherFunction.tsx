@@ -1,4 +1,4 @@
-export const WeatherFunction = async (cityName) => {
+export const WeatherFunction = async (cityName: string) => {
   const response = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_API_KEY}&lang=ru`
   );

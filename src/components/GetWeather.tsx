@@ -3,10 +3,10 @@ import "./GetWeather.scss";
 import { WeatherFunction } from "./WeatherFunction";
 
 const GetWeather = () => {
-  const [data, setData] = useState([]);
+  const [data, setData]: any[] = useState([]);
   const [location, setLocation] = useState("");
 
-  const searchLocation = async (event) => {
+  const searchLocation = async (event: any) => {
     if (event.key === "Enter") {
       const weatherData = await WeatherFunction(location);
       setData(weatherData);

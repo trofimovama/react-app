@@ -1,7 +1,11 @@
 import React from "react";
 import "./Button.scss";
 
-const Button = (props) => {
+interface ButtonProps {
+  name: string;
+}
+
+const Button = (props: ButtonProps) => {
   return (
     <div className="btn-container">
     <div className="btn btn-main">
