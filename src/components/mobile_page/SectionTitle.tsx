@@ -3,7 +3,7 @@ import "./General.scss";
 import "./Hour.scss";
 
 interface SectionTitleProps {
-    sec_title: string;
+    readonly sec_title: string;
 }
 
 export const SectionTitle = (props: SectionTitleProps) => {

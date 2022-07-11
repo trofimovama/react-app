@@ -2,10 +2,22 @@ import React from "react";
 import "./General.scss";
 import "./SearchBar.scss";
 
-const SearchBar = () => {
-  return (
-    <div>SearchBar</div>
-  )
-}
+import {observer} from 'mobx-react';
+import {Store} from "../../stores/LocalStore";
 
-export default SearchBar
+
+const SearchBar:React.FC = observer (() => {
+
+  return (
+    <form className="input-container">
+        <input 
+          type="text"
+          className="search-bar" 
+          value={Store.city}
+          onChange={e => Store.setCity(e.target.value)}
+          onKeyPress = {Store.search} />
+    </form>
+  )
+});
+
+export default SearchBar;

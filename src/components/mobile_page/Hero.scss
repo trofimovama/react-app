@@ -2,7 +2,6 @@
 
 .hero_container {
     width: 80%;
-    height: 30%;
     box-shadow: $shadow-out;
     margin: auto;
     border-radius: 25px; 
@@ -17,7 +16,6 @@
             align-items: center;            
         .city_title {
             @include font ($font-medium, bold, $font-primary);
-                       
         }
         .weather_pic {
             height: 80px;
@@ -25,7 +23,7 @@
             box-shadow: $shadow-in;
             border-radius: 50%;
             padding: 10px;
-            background-color: $color-active;
+            background-color: $mobile-background;
         }
     }
         .main_temp {

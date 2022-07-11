@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { GiHeartBattery } from "react-icons/gi";
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar:React.FC = () => {
   return (
     <div className="header">
       <Link to="/">

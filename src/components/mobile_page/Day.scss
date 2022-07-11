@@ -9,4 +9,7 @@
     @extend %card_container;
     min-width: 200px;
     box-shadow: $shadow-in;
+    &:hover {
+        box-shadow: $shadow-out;
+    }
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./GetWeather.scss";
 import { WeatherFunction } from "./WeatherFunction";
 
-const GetWeather = () => {
+const GetWeather:React.FC = () => {
   const [data, setData]: any[] = useState([]);
   const [location, setLocation] = useState("");
 

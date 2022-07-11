@@ -2,24 +2,33 @@ import React from "react";
 import "./General.scss";
 import "./Hour.scss";
 
-interface DaySecondaryCardProps {
-    day: string;
-    icon: any;
-    temp: string;
-}
+import {observer} from 'mobx-react';
+import {Store} from "../../stores/LocalStore";
+import { ObjectLiteralElementLike } from "typescript";
 
-export const DaySecondaryCard = (props: DaySecondaryCardProps) => {
-    return (
-          <div className="day_secondary_container">
+
+export const DaySecondaryCard:React.FC = observer(():React.ReactElement => {
+
+    const forecastDailyItems = Store.dailyForecast.slice(1).map((f:any, i:number) => {
+        const dayname = new Date(f.dt * 1000).toLocaleDateString("en", {weekday: "long"})
+        return (
+            <div className="day_secondary_container" key={i}>
                 <div className="secondary_title">
-                    {props.day}
+                 {dayname}
                 </div>
                 <div>
-                    <img src={props.icon} alt="sun" className="active_hour_img"/>
+                    <img  alt="sun" className="active_hour_img" src={`http://openweathermap.org/img/wn/${f.weather[0].icon}@4x.png`} />
                 </div>
                 <div className="secondary_hour_degrees">
-                    {props.temp}
+                    {f.temp.max}°C / {f.temp.min}°C
                 </div>
           </div>
+        )
+    })
+
+    return (
+        <div className="secondary_cards_row">
+            {forecastDailyItems}
+        </div>
     );
-  };
+  });

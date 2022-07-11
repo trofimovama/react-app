@@ -1,5 +1,9 @@
 @import './General.scss';
 
+.forecast_container {
+    display: flex;
+}
+
 .hour_container {
     @extend %card_container;
 }
@@ -10,7 +14,10 @@
     justify-content: space-between;
     box-shadow: $shadow-in; 
     background-color: $mobile-background;
-    overflow: hidden;   
+    overflow: hidden;
+    &:hover {
+        box-shadow: $shadow-out;
+    }   
     .secondary_title {
         @include font ($font-small, bold, $font-secondary);
         align-self: center;
