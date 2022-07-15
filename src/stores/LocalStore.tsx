@@ -1,6 +1,30 @@
-import React from 'react';
-import { observable, action, makeAutoObservable } from 'mobx';
+import React, { FormEvent } from 'react';
+import { makeAutoObservable } from 'mobx';
 import axios, { AxiosPromise } from 'axios';
+
+export interface DailyData {
+    dt:number;
+    temp: {
+        max: number;
+        min: number;
+    }
+    weather: [
+        {
+            icon: string | undefined;
+        }
+    ]
+}
+
+export interface HourlyData {
+    dt: number;
+    temp: string;
+    weather: [
+        {
+            main: string;
+            icon: string | undefined;
+        }
+    ]
+}
 
 class LocalStore {
     day:string = this.getDay();
@@ -17,105 +41,85 @@ class LocalStore {
     humidity:string = '';
     sunrise:string = '';
     sunset:string = '';
-    iconUrl:string = 'http://openweathermap.org/img/wn/02d@2x.png';
     lat:string = '';
     lon:string = '';
-    hourlyForecast:Array<{}> = [];
-    dailyForecast:Array<{}> = [];
+    hourlyForecast:HourlyData[] = [];
+    dailyForecast:DailyData[] = [];
     icon:string = '';
-
+    UrlIcon:string = 'http://openweathermap.org/img/wn/';
+    UrlIconSize:string = '@2x.png';
+    
     constructor() {
-        makeAutoObservable(this, {
-            location: observable,
-            temp: observable,
-            feels_like: observable,
-            temp_min: observable,
-            temp_max: observable,
-            wind_speed: observable,
-            humidity: observable,
-            sunrise: observable,
-            sunset: observable,
-            icon: observable,
-            iconUrl: observable,
-            description: observable,
-            lat: observable,
-            lon: observable,
-            day: observable,
-            month: observable,
-            
-            getDay: action,
-            getMonth: action,
-            setCity: action,
-            setLocation: action,
-            getWeatherData: action,
-            getHourlyForecast: action,
-        });
-    }
-
-    componentDidMount():void {
-        this.getDay();
-        this.getMonth();
+        makeAutoObservable(this);
     }
 
     getDay ():string {
-        const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        this.day = days[new Date().getDay()];
+        const DAYS_OF_WEEK = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        this.day = DAYS_OF_WEEK[new Date().getDay()];
         
         return this.day;
     }
 
     getMonth ():string {
-        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        this.month = months[new Date().getMonth()];
+        const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        this.month = MONTHS[new Date().getMonth()];
         
         return this.month;
     }
 
     setLocation(location: string):void {
-        this.location = location.charAt(0).toUpperCase() + location.slice(1);
+        const _location = location.toLowerCase();
+        this.location = _location.charAt(0).toUpperCase() + _location.slice(1);
     }
 
     setCity (city:string):void {
         this.city = city;
     }
 
+    getValue = (e:FormEvent<HTMLInputElement>):void => {
+        this.setCity(e.currentTarget.value)
+    }
+
     search = async (e:React.KeyboardEvent):Promise<void> => {
         if (e.key === 'Enter') {
             e.preventDefault();
-      
-            const weatherRes = await this.getWeatherData(this.city);
-            await this.getHourlyForecast(weatherRes.data.coord.lat, weatherRes.data.coord.lon);
-            this.setLocation(this.city);
-            this.setCity('');
-           }
         
+            try {
+                const weatherRes = await this.getWeatherData(this.city);
+                await this.getHourlyForecast(weatherRes.data.coord.lat, weatherRes.data.coord.lon);
+                this.setLocation(this.city);
+                this.setCity('');
+            } catch (err) {
+                if (err instanceof Error) {
+                   this.setLocation('Come on, man... Try again');
+                   this.setCity('')
+                }
+            }
+        }
     }
 
     getWeatherData(location:string):AxiosPromise {
       return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_API_KEY}&lang=ru`)
         .then((res) => {
-            console.log(res);
-            
-            this.temp = Math.round(parseInt(res.data.main.temp));
-            this.feels_like = Math.round(parseInt(res.data.main.feels_like));
-            this.temp_min = Math.round(parseInt(res.data.main.temp_min));
-            this.temp_max = Math.round(parseInt(res.data.main.temp_max));
-            this.wind_speed = res.data.wind.speed;
-            this.humidity = res.data.main.humidity;
-            this.sunrise = (new Date(res.data.sys.sunrise * 1000)).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
-            this.sunset = (new Date(res.data.sys.sunset * 1000)).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
-            this.description = res.data.weather[0].main;
-            this.icon = res.data.weather[0].icon;
-            this.iconUrl = `http://openweathermap.org/img/wn/${this.icon}@2x.png`;
-
+           
+                this.temp = Math.round(parseInt(res.data.main.temp));
+                this.feels_like = Math.round(parseInt(res.data.main.feels_like));
+                this.temp_min = Math.round(parseInt(res.data.main.temp_min));
+                this.temp_max = Math.round(parseInt(res.data.main.temp_max));
+                this.wind_speed = res.data.wind.speed;
+                this.humidity = res.data.main.humidity;
+                this.sunrise = (new Date(res.data.sys.sunrise * 1000)).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+                this.sunset = (new Date(res.data.sys.sunset * 1000)).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+                this.description = res.data.weather[0].main;
+                this.icon = res.data.weather[0].icon;
             return res;
         })
-    }
+        }
 
     getHourlyForecast(lat:string, lon:string):AxiosPromise {
         return axios.get(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_API_KEY}&lang=ru`)
         .then((response) => {
-            console.log(response)
+            
             this.hourlyForecast = response.data.hourly;
             this.dailyForecast = response.data.daily;
 

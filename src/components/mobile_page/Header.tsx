@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import {observer} from 'mobx-react';
 import {Store} from "../../stores/LocalStore";
 
-const Header:React.FC = observer (() => {
+const Header = observer (() => {
 
 
     return (

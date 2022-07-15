@@ -8,7 +8,7 @@ import "../components/mobile_page/General.scss";
 import {observer} from 'mobx-react';
 
 
-const Mobile:React.FC = observer (() => {
+const Mobile = observer (() => {
   return (
     <div className='mobile-container'>
       <div className="content-container">

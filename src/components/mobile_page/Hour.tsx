@@ -7,7 +7,7 @@ import {SectionTitle} from './SectionTitle'
 
 import {observer} from 'mobx-react';
 
-const Hour:React.FC = observer(() => {
+const Hour = observer(() => {
     return (
       <section>
           <SectionTitle sec_title='Hourly Forecast' />

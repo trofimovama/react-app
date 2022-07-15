@@ -3,13 +3,14 @@ import "./General.scss";
 import "./Hour.scss";
 
 interface SectionTitleProps {
-    readonly sec_title: string;
+    sec_title: string;
 }
 
-export const SectionTitle = (props: SectionTitleProps) => {
+export const SectionTitle = React.memo((props: SectionTitleProps) => {
     return (
         <div className="section_title">
             {props.sec_title}
         </div>
     );
-  };
+  });
+  

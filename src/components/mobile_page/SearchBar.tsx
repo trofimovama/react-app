@@ -6,7 +6,7 @@ import {observer} from 'mobx-react';
 import {Store} from "../../stores/LocalStore";
 
 
-const SearchBar:React.FC = observer (() => {
+const SearchBar = observer (() => {
 
   return (
     <form className="input-container">
@@ -14,7 +14,7 @@ const SearchBar:React.FC = observer (() => {
           type="text"
           className="search-bar" 
           value={Store.city}
-          onChange={e => Store.setCity(e.target.value)}
+          onChange={Store.getValue}
           onKeyPress = {Store.search} />
     </form>
   )

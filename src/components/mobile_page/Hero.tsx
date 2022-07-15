@@ -13,14 +13,14 @@ import {FiSunset} from "react-icons/fi";
 import {observer} from 'mobx-react';
 import {Store} from "../../stores/LocalStore";
 
-const Hero:React.FC = observer (() => {
+const Hero = observer (() => {
  
     return (
       <section className="hero_container">
           <div className="flex_container_top">
               <div className="left_flex_box">
                   <p className="city_title">{Store.location}</p>
-                  <img className="weather_pic" src={Store.iconUrl}/>
+                  <img className="weather_pic" src={`${Store.UrlIcon}02d${Store.UrlIconSize}`}/>
               </div>
               <div className="right_flex_box">
                   <div className="main_temp">{Store.temp}°C</div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import GetWeather from '../components/GetWeather';
 
-const Weather:React.FC = () => {
+const Weather = () => {
   return (
     <div>
         <GetWeather />

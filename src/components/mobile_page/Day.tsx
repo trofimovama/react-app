@@ -5,7 +5,7 @@ import "./Day.scss";
 import {SectionTitle} from './SectionTitle'
 import {DaySecondaryCard} from './DaySecondaryCard'
 
-const Day:React.FC = () => {
+const Day = () => {
     return (
       <section>
           <SectionTitle sec_title='7 Day Forecast' />

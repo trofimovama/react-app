@@ -5,7 +5,7 @@ import Home from './routes/Home'
 import Weather from './routes/Weather';
 import Mobile from './routes/Mobile';
 
-const App:React.FC = () => {
+const App = () => {
   return (
     <>
       <Routes>

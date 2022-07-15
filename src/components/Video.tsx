@@ -6,7 +6,7 @@ import Button from './Button';
 
 import spaceVideo from "../assets/space.mp4";
 
-const Video:React.FC = () => {
+const Video = () => {
   return (
     <div className="hero">
       <video autoPlay loop muted id="video" className="cover-video">
