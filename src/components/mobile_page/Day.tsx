@@ -1,4 +1,3 @@
-import React from "react";
 import "./General.scss";
 import "./Day.scss";
 
@@ -10,7 +9,7 @@ const Day = () => {
       <section>
           <SectionTitle sec_title='7 Day Forecast' />
           <div className="cards_row">
-          <DaySecondaryCard />          
+            <DaySecondaryCard />          
           </div>
       </section>
     );

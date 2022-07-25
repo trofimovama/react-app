@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./General.scss";
 import "./Hero.scss";
 
@@ -20,7 +18,7 @@ const Hero = observer (() => {
           <div className="flex_container_top">
               <div className="left_flex_box">
                   <p className="city_title">{Store.location}</p>
-                  <img className="weather_pic" src={`${Store.UrlIcon}02d${Store.UrlIconSize}`}/>
+                  <img className="weather_pic" alt={Store.description} src={`${Store.UrlIcon}02d${Store.UrlIconSize}`}/>
               </div>
               <div className="right_flex_box">
                   <div className="main_temp">{Store.temp}°C</div>

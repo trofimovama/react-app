@@ -1,12 +1,9 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import "./General.scss";
 import "./Hour.scss";
 
 import {observer} from 'mobx-react';
 import {Store} from "../../stores/LocalStore";
-
-
-
 
 export const DaySecondaryCard = observer(():React.ReactElement => {
 
@@ -18,7 +15,7 @@ export const DaySecondaryCard = observer(():React.ReactElement => {
                  {dayname}
                 </div>
                 <div>
-                    <img  alt="sun" className="active_hour_img" src={`${Store.UrlIcon}${f.weather[0].icon}${Store.UrlIconSize}`} />
+                    <img alt={f.weather[0].description} className="active_hour_img" src={`${Store.UrlIcon}${f.weather[0].icon}${Store.UrlIconSize}`} />
                 </div>
                 <div className="secondary_hour_degrees">
                     {f.temp.max}°C / {f.temp.min}°C

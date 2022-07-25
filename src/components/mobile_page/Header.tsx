@@ -1,4 +1,3 @@
-import React from "react";
 import "./General.scss";
 import "./Header.scss";
 import SearchBar from "./SearchBar";

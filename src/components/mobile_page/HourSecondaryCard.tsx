@@ -14,7 +14,7 @@ export const HourSecondaryCard = observer(():React.ReactElement => {
                 <div className="secondary_hour_degrees">{Math.round(parseInt(f.temp))}°C</div>
                 <div className="bottom_flex_items">
                     <div className="icon_container">
-                        <img  alt="sun" className="flex_img" src={`${Store.UrlIcon}${f.weather[0].icon}${Store.UrlIconSize}`}/>  
+                        <img alt={f.weather[0].description} className="flex_img" src={`${Store.UrlIcon}${f.weather[0].icon}${Store.UrlIconSize}`}/>  
                     </div>            
                     <div className="secondary_title bottom_descr">{f.weather[0].main}</div>
                 </div>

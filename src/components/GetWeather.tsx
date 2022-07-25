@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./GetWeather.scss";
 import { WeatherFunction } from "./WeatherFunction";
 
@@ -11,7 +11,6 @@ const GetWeather = () => {
       const weatherData = await WeatherFunction(location);
       setData(weatherData);
       setLocation("");
-      console.log(weatherData);
     }
   };
 
