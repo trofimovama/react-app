@@ -1,0 +1,6 @@
+@import './General.scss';
+
+.header_title {
+    @include font($font-large, bold, $font-primary);
+    padding: 20px;
+}

@@ -1,0 +1,26 @@
+@import './General.scss';
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    .search-bar {
+        box-shadow: $shadow-in;
+        width: 300px;
+        height: 30px;
+        margin: auto;
+        margin-bottom: 15px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        padding: 1rem;
+        text-transform: capitalize;
+    }
+
+    .search-btn {
+        outline: none;
+        border: none;
+        background-color: $mobile-background;
+    }
+}
